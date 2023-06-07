@@ -10,7 +10,7 @@ export const Content = ({ tabsConfig }: { tabsConfig: any[] }) => {
         {tabsConfig.map((tag) => (
           <Tab.Panel
             className={tx(
-              "max-w-[1280px] rounded-md overflow-hidden mx-auto border-border-default border"
+              "max-w-[1220px] rounded-md overflow-hidden mx-auto border-border-default border"
             )}
           >
             {tag.content}

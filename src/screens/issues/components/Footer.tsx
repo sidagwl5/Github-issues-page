@@ -47,7 +47,7 @@ const Footer = () => {
   return (
     <footer
       className={tx(
-        "w-full flex border-t flex-col !lg:flex-row border-t-border-mute py-10 justify-between gap-[10%] gap-y-5 max-w-[1280px] mx-auto items-center"
+        "w-full flex border-t flex-col !lg:flex-row border-t-border-mute py-10 justify-between gap-[10%] gap-y-5 max-w-[1220px] mx-auto items-center"
       )}
     >
       <section
