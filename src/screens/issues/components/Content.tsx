@@ -7,7 +7,7 @@ import { ITabsConfig } from "../Issues";
 export const Content = ({ tabsConfig }: { tabsConfig: ITabsConfig[] }) => {
   return (
     <Tab.Panels>
-      <section className={tx("sm:p-3 md:p-6 flex-1")}>
+      <section className={tx("!pb-0 sm:p-3 md:p-6 flex-1")}>
         {tabsConfig.map((tag) => (
           <Tab.Panel
             className={tx(
