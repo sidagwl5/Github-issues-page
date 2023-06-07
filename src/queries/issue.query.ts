@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { axiosInstance } from "../configs/axios.config";
 import { useMemo } from "react";
 
@@ -2696,4 +2696,25 @@ export const useGetIssuesQuery = () => {
     issuesData: IIssue[];
     isIssuesLoading: boolean;
   };
+};
+
+export const useGetIssuesInfiniteQuery = () => {
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery<{
+    data: IIssue[];
+    next: number;
+  }>(
+    "infinite-scroll-issues",
+    async ({ pageParam = 1 }) => {
+      const { data } = await axiosInstance.get(
+        `/repos/facebook/react/issues?page=${pageParam}`
+      );
+      return { data, next: pageParam + 1 };
+    },
+    {
+      getNextPageParam: (page) => page.next,
+      enabled: true,
+    }
+  );
+
+  return { data, fetchNextPage, hasNextPage, isLoading };
 };

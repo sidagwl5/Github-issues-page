@@ -4,6 +4,10 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { VscIssues } from "react-icons/vsc";
 import { IIssue } from "src/queries/issue.query";
 
+interface Iprops extends IIssue {
+  index?: number;
+}
+
 export const IssueItem = ({
   title,
   labels,
@@ -11,11 +15,13 @@ export const IssueItem = ({
   comments,
   html_url,
   user,
-}: IIssue) => {
+  index,
+}: Iprops) => {
   return (
     <section
       className={tx(
-        "px-4 py-3 gap-2 flex hover:bg-canvas-subtle border-t border-t-border-mute"
+        "px-4 py-3 gap-2 flex hover:bg-canvas-subtle",
+        index !== 0 && "border-t border-t-border-mute"
       )}
     >
       <section>

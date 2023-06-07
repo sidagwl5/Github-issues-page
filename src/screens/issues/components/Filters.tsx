@@ -49,7 +49,7 @@ const Filters = () => {
   return (
     <section
       className={tx(
-        "p-4 flex items-center flex-col !sm:flex-row bg-canvas-subtle gap-y-4 gap-x-2"
+        "p-4 flex items-center flex-col border-b border-b-border-mute !sm:flex-row bg-canvas-subtle gap-y-4 gap-x-2"
       )}
     >
       <section className={tx("flex gap-2 w-full items-center")}>

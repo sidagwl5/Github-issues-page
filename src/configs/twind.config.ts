@@ -15,7 +15,7 @@ export const config = defineConfig({
         "canvas-default": "#ffffff",
         "border-mute": "#d8dee4",
         "border-active": "#f78166",
-        "open-fg": "#3fb950",
+        "open-fg": "#1a7f37",
         "btn-text": "#24292f",
         "btn-border": "#1f232826",
         "btn-bg": "#f6f8fa",

@@ -148,15 +148,15 @@ const Issues = () => {
       </section>
       <Tab.Panels>
         <section className={tx("p-4 md:p-6 flex-1")}>
-          <section
-            className={tx(
-              "max-w-[1280px] rounded-md overflow-hidden mx-auto border-border-default border"
-            )}
-          >
-            {tabsConfig.map((tag) => (
-              <Tab.Panel>{tag.content}</Tab.Panel>
-            ))}
-          </section>
+          {tabsConfig.map((tag) => (
+            <Tab.Panel
+              className={tx(
+                "max-w-[1280px] rounded-md overflow-hidden mx-auto border-border-default border"
+              )}
+            >
+              {tag.content}
+            </Tab.Panel>
+          ))}
         </section>
       </Tab.Panels>
     </Tab.Group>
