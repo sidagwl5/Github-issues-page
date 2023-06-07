@@ -5,8 +5,11 @@ import App from "./App.tsx";
 import "./index.css";
 import { config } from "./configs/twind.config.ts";
 import { install } from "@twind/core";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
 
-console.log("called");
+dayjs.extend(relativeTime);
+
 install(config);
 
 const queryClient = new QueryClient({

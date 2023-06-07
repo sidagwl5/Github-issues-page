@@ -1,41 +1,22 @@
-import { tx } from "@twind/core";
-import Filters from "./components/Filters";
-import { IssuesContainer } from "./components/IssuesContainer";
-import { Tab } from "@headlessui/react";
-import { FiCode } from "react-icons/fi";
-import { VscIssues } from "react-icons/vsc";
-import { BiGitPullRequest } from "react-icons/bi";
-import { MdPlayCircleOutline, MdSecurity } from "react-icons/md";
-import { useMemo, useState } from "react";
-import { useGetIssuesQuery } from "src/queries/issue.query";
-import { Tag } from "@/ui/atoms/Tag";
-import { LuLayout, LuBookOpen } from "react-icons/lu";
-import { GoGraph } from "react-icons/go";
 import StatisticButton from "@/ui/atoms/StatisticButton";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { Tag } from "@/ui/atoms/Tag";
+import { Tab } from "@headlessui/react";
+import { tx } from "@twind/core";
+import { useState } from "react";
 import { AiOutlineStar } from "react-icons/ai";
+import { BiGitPullRequest } from "react-icons/bi";
+import { FiCode } from "react-icons/fi";
+import { GoGraph, GoRepo } from "react-icons/go";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { LuBookOpen, LuLayout } from "react-icons/lu";
+import { MdPlayCircleOutline, MdSecurity } from "react-icons/md";
 import { TbGitFork } from "react-icons/tb";
-import { GoRepo } from "react-icons/go";
-
-const IssueAction = () => {
-  const { issuesData } = useGetIssuesQuery();
-  const { open } = useMemo(
-    () =>
-      issuesData.reduce(
-        (prev, curr) => {
-          if (curr.state === "open") {
-            prev.open++;
-          }
-
-          return prev;
-        },
-        { open: 0 }
-      ),
-    [issuesData]
-  );
-
-  return <Tag name={String(open)} color={"f6f8fa"} />;
-};
+import { VscIssues } from "react-icons/vsc";
+import Content from "./components/Content";
+import Filters from "./components/Filters";
+import { IssueAction } from "./components/IssueAction";
+import { IssuesContainer } from "./components/IssuesContainer";
+import { Tabs } from "./components/Tabs";
 
 const Issues = () => {
   const tabsConfig = useState([
@@ -112,53 +93,9 @@ const Issues = () => {
             Fork
           </StatisticButton>
         </section>
-        <Tab.List className={tx("gap-4 flex overflow-auto")}>
-          {tabsConfig.map((tag) => (
-            <Tab className={tx("text-fg-default")}>
-              {({ selected }) => (
-                <>
-                  <section
-                    className={tx(
-                      "flex gap-2 items-center hover:bg-canvas-subtle px-2 py-1 rounded-md",
-                      selected && "border-b border-transparent"
-                    )}
-                  >
-                    <span className={tx("text-fg-muted")}>{tag.icon}</span>
-                    <span
-                      className={tx(
-                        selected && "font-semibold",
-                        "text-sm leading-none whitespace-nowrap"
-                      )}
-                    >
-                      {tag.title}
-                    </span>
-                    {tag.actions ?? null}
-                  </section>
-                  <div
-                    className={tx(
-                      selected && "bg-border-active rounded-lg",
-                      "h-[2px] mt-1 relative"
-                    )}
-                  />
-                </>
-              )}
-            </Tab>
-          ))}
-        </Tab.List>
+        <Tabs tabsConfig={tabsConfig} />
       </section>
-      <Tab.Panels>
-        <section className={tx("p-4 md:p-6 flex-1")}>
-          {tabsConfig.map((tag) => (
-            <Tab.Panel
-              className={tx(
-                "max-w-[1280px] rounded-md overflow-hidden mx-auto border-border-default border"
-              )}
-            >
-              {tag.content}
-            </Tab.Panel>
-          ))}
-        </section>
-      </Tab.Panels>
+      <Content tabsConfig={tabsConfig} />
     </Tab.Group>
   );
 };

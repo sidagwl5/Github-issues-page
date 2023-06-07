@@ -2689,7 +2689,7 @@ export const useGetIssuesQuery = () => {
       const { data } = await axiosInstance.get("/repos/facebook/react/issues");
       return data;
     },
-    enabled: false,
+    enabled: true,
   });
 
   return { issuesData, isIssuesLoading } as {

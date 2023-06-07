@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useGetIssuesQuery } from "../../../queries/issue.query";
 import { VscIssues } from "react-icons/vsc";
 import { AiFillCaretDown } from "react-icons/ai";
+import { FiCheck } from "react-icons/fi";
 
 const filtersConfig = [
   {
@@ -49,7 +50,7 @@ const Filters = () => {
   return (
     <section
       className={tx(
-        "p-4 flex items-center flex-col border-b border-b-border-mute !sm:flex-row bg-canvas-subtle gap-y-4 gap-x-2"
+        "p-4 flex items-center flex-col border-b border-b-border-mute !sm:flex-row bg-canvas-subtle gap-y-4 gap-x-3"
       )}
     >
       <section className={tx("flex gap-2 w-full items-center")}>
@@ -60,7 +61,10 @@ const Filters = () => {
           <h5 className={tx("text-fg-default font-semibold cursor-pointer")}>
             {open} Open
           </h5>
-          <h5 className={tx("text-fg-muted")}>{closed} Closed</h5>
+          <h5 className={tx("text-fg-muted flex items-center gap-2")}>
+            <FiCheck className={tx("relative top-[2px] text-base")} />
+            {closed} Closed
+          </h5>
         </section>
       </section>
 

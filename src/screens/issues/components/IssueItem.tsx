@@ -3,6 +3,7 @@ import { Tag } from "@/ui/atoms/Tag";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { VscIssues } from "react-icons/vsc";
 import { IIssue } from "src/queries/issue.query";
+import dayjs from "dayjs";
 
 interface Iprops extends IIssue {
   index?: number;
@@ -16,6 +17,7 @@ export const IssueItem = ({
   html_url,
   user,
   index,
+  created_at,
 }: Iprops) => {
   return (
     <section
@@ -43,7 +45,7 @@ export const IssueItem = ({
           ))}
         </section>
         <a className={tx("text-xs text-fg-muted")}>
-          #{number} oaened yesterday by {user?.login}
+          #{number} opened {dayjs(created_at).fromNow()} by {user?.login}
         </a>
       </section>
 
