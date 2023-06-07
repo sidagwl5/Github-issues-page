@@ -1,4 +1,4 @@
-import { css, tx } from "@twind/core";
+import { tx } from "@twind/core";
 
 export const Tag = ({
   color,

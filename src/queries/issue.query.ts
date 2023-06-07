@@ -13,12 +13,12 @@ export interface IIssue {
   node_id: string;
   number: number;
   title: string;
-  user: Assignee;
-  labels: Label[];
+  user: IAssignee;
+  labels: ILabel[];
   state: string;
   locked: boolean;
-  assignee: Assignee;
-  assignees: Assignee[];
+  assignee: IAssignee;
+  assignees: IAssignee[];
   milestone: null;
   comments: number;
   created_at: Date;
@@ -27,7 +27,7 @@ export interface IIssue {
   author_association: string;
   active_lock_reason: null;
   body: string;
-  reactions: Reactions;
+  reactions: IReactions;
   timeline_url: string;
   performed_via_github_app: null;
   state_reason: null;
