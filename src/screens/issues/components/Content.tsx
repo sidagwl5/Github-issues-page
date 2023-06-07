@@ -2,15 +2,16 @@ import { Tab } from "@headlessui/react";
 import { tx } from "@twind/core";
 import { GoLightBulb } from "react-icons/go";
 import Footer from "./Footer";
+import { ITabsConfig } from "../Issues";
 
-export const Content = ({ tabsConfig }: { tabsConfig: any[] }) => {
+export const Content = ({ tabsConfig }: { tabsConfig: ITabsConfig[] }) => {
   return (
     <Tab.Panels>
-      <section className={tx("p-4 md:p-6 flex-1")}>
+      <section className={tx("sm:p-3 md:p-6 flex-1")}>
         {tabsConfig.map((tag) => (
           <Tab.Panel
             className={tx(
-              "max-w-[1220px] rounded-md overflow-hidden mx-auto border-border-default border"
+              "max-w-[1220px] min-h-[70vh] sm:rounded-md overflow-hidden mx-auto border-border-default border"
             )}
           >
             {tag.content}

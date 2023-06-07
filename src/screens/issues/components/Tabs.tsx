@@ -1,7 +1,8 @@
 import { Tab } from "@headlessui/react";
 import { tx } from "@twind/core";
+import { ITabsConfig } from "../Issues";
 
-export const Tabs = ({ tabsConfig }: { tabsConfig: any[] }) => (
+export const Tabs = ({ tabsConfig }: { tabsConfig: ITabsConfig[] }) => (
   <Tab.List className={tx("gap-4 flex overflow-auto")}>
     {tabsConfig.map((tag) => (
       <Tab className={tx("text-fg-default")}>

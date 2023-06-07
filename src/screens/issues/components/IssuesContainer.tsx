@@ -33,7 +33,7 @@ export const IssuesContainer = () => {
       ) : (
         <p
           className={tx(
-            "absolute text-fg-muted top-[50%] left-[50%] text-black -translate-x-[50%] -translate-y-[50%]"
+            "absolute text-fg-muted top-[55%] left-[50%] text-black -translate-x-[50%] -translate-y-[50%]"
           )}
         >
           No issues found...

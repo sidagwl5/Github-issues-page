@@ -17,9 +17,24 @@ import Filters from "./components/Filters";
 import { IssueAction } from "./components/IssueAction";
 import { IssuesContainer } from "./components/IssuesContainer";
 import { Tabs } from "./components/Tabs";
+import { JSX } from "react";
+
+export type ITabsConfig =
+  | {
+      title: string;
+      icon: JSX.Element;
+      actions?: undefined;
+      content?: undefined;
+    }
+  | {
+      title: string;
+      icon: JSX.Element;
+      actions: JSX.Element;
+      content: JSX.Element;
+    };
 
 const Issues = () => {
-  const tabsConfig = useState([
+  const tabsConfig = useState<ITabsConfig[]>([
     {
       title: "Code",
       icon: <FiCode />,
@@ -70,7 +85,7 @@ const Issues = () => {
           "p-4 md:p-6 !pb-0 bg-canvas-subtle border-b border-b-border-mute"
         )}
       >
-        <section className={tx("flex gap-2 items-center mb-8")}>
+        <section className={tx("flex gap-2 items-center mb-8 mt-2 sm:!mt-0")}>
           <GoRepo className={tx("relative text-fg-muted top-0.5")} />
 
           <h1

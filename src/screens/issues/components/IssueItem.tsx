@@ -25,7 +25,7 @@ export const IssueItem = ({
   return (
     <section
       className={tx(
-        "px-4 py-3 gap-2 flex hover:bg-canvas-subtle",
+        "px-3 sm:px-4 py-2 sm:py-3 gap-2 flex hover:bg-canvas-subtle",
         index !== 0 && "border-t border-t-border-mute"
       )}
     >
