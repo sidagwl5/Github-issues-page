@@ -84,7 +84,11 @@ const Issues = () => {
 
   return (
     <Tab.Group defaultIndex={1}>
-      <section className={tx("p-4 md:p-6 !pb-0 border-b border-b-border-mute")}>
+      <section
+        className={tx(
+          "p-4 md:p-6 !pb-0 bg-canvas-subtle border-b border-b-border-mute"
+        )}
+      >
         <section className={tx("flex gap-2 items-center mb-8")}>
           <GoRepo className={tx("relative text-fg-muted top-0.5")} />
           <h1
