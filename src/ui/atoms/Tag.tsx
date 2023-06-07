@@ -1,4 +1,4 @@
-import { tx } from "@twind/core";
+import { css, tx } from "@twind/core";
 
 export const Tag = ({
   color,
@@ -12,8 +12,9 @@ export const Tag = ({
   return (
     <section
       className={tx(
-        `text-[#${color}] bg-[#${color}] border-[#${color}] border-opacity-30`,
-        "w-max bg-opacity-20 px-2 text-xs flex items-center font-medium whitespace-nowrap rounded-2xl border",
+        `bg-[#${color}] border-[#${color}] border-opacity-30`,
+        "w-max px-2 text-xs flex items-center font-medium whitespace-nowrap rounded-2xl border",
+        color.toLowerCase() === "b60205" ? "text-white" : "text-black",
         className
       )}
     >

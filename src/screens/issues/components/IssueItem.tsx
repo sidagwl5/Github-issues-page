@@ -2,6 +2,7 @@ import { tx } from "@twind/core";
 import { Tag } from "@/ui/atoms/Tag";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { VscIssues } from "react-icons/vsc";
+import { IIssue } from "src/queries/issue.query";
 
 export const IssueItem = ({
   title,
@@ -10,7 +11,7 @@ export const IssueItem = ({
   comments,
   html_url,
   user,
-}: any) => {
+}: IIssue) => {
   return (
     <section
       className={tx(

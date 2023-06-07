@@ -34,7 +34,7 @@ const IssueAction = () => {
     [issuesData]
   );
 
-  return <Tag name={open} color={"ffffff"} />;
+  return <Tag name={open} color={"f6f8fa"} />;
 };
 
 const Issues = () => {
