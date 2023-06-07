@@ -29,10 +29,20 @@ export const IssuesContainer = () => {
           </div>
         }
       >
-        {data?.pages.map((issue) =>
-          issue.data.map((issue, index) => (
-            <IssueItem {...issue} index={index} />
-          ))
+        {data?.pages.length ? (
+          data?.pages.map((issue) =>
+            issue.data.map((issue, index) => (
+              <IssueItem {...issue} index={index} />
+            ))
+          )
+        ) : (
+          <p
+            className={tx(
+              "absolute text-fg-muted top-[50%] left-[50%] text-black -translate-x-[50%] -translate-y-[50%]"
+            )}
+          >
+            No issues found...
+          </p>
         )}
       </InfiniteScroller>
     </section>
