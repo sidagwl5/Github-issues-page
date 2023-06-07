@@ -5,10 +5,12 @@ import { Tab } from "@headlessui/react";
 import { FiCode } from "react-icons/fi";
 import { VscIssues } from "react-icons/vsc";
 import { BiGitPullRequest } from "react-icons/bi";
-import { MdPlayCircleOutline } from "react-icons/md";
+import { MdPlayCircleOutline, MdSecurity } from "react-icons/md";
 import { useMemo, useState } from "react";
 import { useGetIssuesQuery } from "src/queries/issue.query";
 import { Tag } from "@/ui/atoms/Tag";
+import { LuLayout, LuBookOpen } from "react-icons/lu";
+import { GoGraph } from "react-icons/go";
 
 const IssueAction = () => {
   const { issuesData } = useGetIssuesQuery();
@@ -57,12 +59,28 @@ const Issues = () => {
         <MdPlayCircleOutline className={tx("scale-[1.2] top-[1px] relative")} />
       ),
     },
+    {
+      title: "Projects",
+      icon: <LuLayout className={tx("scale-[1.1] top-[1px] relative")} />,
+    },
+    {
+      title: "Wiki",
+      icon: <LuBookOpen className={tx("scale-[1.2] top-[1px] relative")} />,
+    },
+    {
+      title: "Security",
+      icon: <MdSecurity className={tx("scale-[1.15] relative")} />,
+    },
+    {
+      title: "Insights",
+      icon: <GoGraph className={tx("scale-[1.1] relative")} />,
+    },
   ])[0];
 
   return (
-    <Tab.Group>
-      <section className={tx("p-6 pb-0 border-b border-b-border-mute")}>
-        <Tab.List className={tx("gap-4 flex")}>
+    <Tab.Group defaultIndex={1}>
+      <section className={tx("p-4 md:p-6 pb-0 border-b border-b-border-mute")}>
+        <Tab.List className={tx("gap-4 flex overflow-auto")}>
           {tabsConfig.map((tag) => (
             <Tab className={tx("text-fg-default")}>
               {({ selected }) => (
@@ -77,7 +95,7 @@ const Issues = () => {
                     <span
                       className={tx(
                         selected && "font-semibold",
-                        "text-sm leading-none"
+                        "text-sm leading-none whitespace-nowrap"
                       )}
                     >
                       {tag.title}
@@ -97,10 +115,10 @@ const Issues = () => {
         </Tab.List>
       </section>
       <Tab.Panels>
-        <section className={tx("p-6 flex-1")}>
+        <section className={tx("p-4 md:p-6 flex-1")}>
           <section
             className={tx(
-              "max-w-[1280px] mx-auto border-border-default border"
+              "max-w-[1280px] rounded-md overflow-hidden mx-auto border-border-default border"
             )}
           >
             {tabsConfig.map((tag) => (
