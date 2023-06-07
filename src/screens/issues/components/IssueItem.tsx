@@ -3,7 +3,14 @@ import { Tag } from "@/ui/atoms/Tag";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { VscIssues } from "react-icons/vsc";
 
-export const IssueItem = ({ title, labels, number, comments }: any) => {
+export const IssueItem = ({
+  title,
+  labels,
+  number,
+  comments,
+  html_url,
+  user,
+}: any) => {
   return (
     <section
       className={tx(
@@ -11,28 +18,45 @@ export const IssueItem = ({ title, labels, number, comments }: any) => {
       )}
     >
       <section>
-        <VscIssues className={tx("scale-[1.15] text-open-fg relative")} />
+        <VscIssues className={tx("scale-[1.15] top-1 text-open-fg relative")} />
       </section>
       <section className={tx("flex flex-col gap-1")}>
         <section className={tx("flex flex-wrap gap-1")}>
-          <p
+          <a
+            target="_blank"
+            href={html_url}
             className={tx(
-              "text-fg-default leading-none hover:text-accent-fg cursor-pointer font-semibold"
+              "text-fg-default hover:text-accent-fg cursor-pointer font-semibold"
             )}
           >
             {title}
-          </p>
+          </a>
           {labels.map((label) => (
             <Tag {...label} />
           ))}
         </section>
         <a className={tx("text-xs text-fg-muted")}>
-          #{number} oaened yesterday by someone
+          #{number} oaened yesterday by {user?.login}
         </a>
       </section>
 
       <section
-        className={tx("gap-1 items-center h-max group ml-auto hidden !sm:flex")}
+        className={tx("ml-auto max-w-[80px] min-w-[80px] hidden !sm:block")}
+      >
+        {user?.avatar_url && (
+          <img
+            src={user?.avatar_url}
+            alt="user-profile"
+            className={tx("w-5 h-5 rounded-full object-cover")}
+          />
+        )}
+      </section>
+
+      <section
+        onClick={() => {
+          window.open(html_url, "_blank");
+        }}
+        className={tx("gap-1 items-center h-max group hidden !sm:flex")}
       >
         <FaRegCommentAlt
           className={tx(

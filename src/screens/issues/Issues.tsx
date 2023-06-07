@@ -11,6 +11,11 @@ import { useGetIssuesQuery } from "src/queries/issue.query";
 import { Tag } from "@/ui/atoms/Tag";
 import { LuLayout, LuBookOpen } from "react-icons/lu";
 import { GoGraph } from "react-icons/go";
+import StatisticButton from "@/ui/atoms/StatisticButton";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { AiOutlineStar } from "react-icons/ai";
+import { TbGitFork } from "react-icons/tb";
+import { GoRepo } from "react-icons/go";
 
 const IssueAction = () => {
   const { issuesData } = useGetIssuesQuery();
@@ -79,7 +84,30 @@ const Issues = () => {
 
   return (
     <Tab.Group defaultIndex={1}>
-      <section className={tx("p-4 md:p-6 pb-0 border-b border-b-border-mute")}>
+      <section className={tx("p-4 md:p-6 !pb-0 border-b border-b-border-mute")}>
+        <section className={tx("flex gap-2 items-center mb-8")}>
+          <GoRepo className={tx("relative text-fg-muted top-0.5")} />
+          <h1
+            className={tx(
+              "leading-none text-xl text-accent-fg cursor-pointer font-semibold"
+            )}
+          >
+            facebook / react
+          </h1>
+          <Tag name={"Public"} color={"7d8590"} className={"!bg-transparent"} />
+          <StatisticButton className={tx("ml-auto hidden !sm:flex")}>
+            <IoIosNotificationsOutline className={tx("text-base")} />
+            Notifications
+          </StatisticButton>
+          <StatisticButton className={tx("hidden !sm:flex")}>
+            <AiOutlineStar className={tx("text-base")} />
+            Stars
+          </StatisticButton>
+          <StatisticButton className={tx("hidden !sm:flex")}>
+            <TbGitFork className={tx("text-base")} />
+            Fork
+          </StatisticButton>
+        </section>
         <Tab.List className={tx("gap-4 flex overflow-auto")}>
           {tabsConfig.map((tag) => (
             <Tab className={tx("text-fg-default")}>
