@@ -1,5 +1,7 @@
 import { tx } from "@twind/core";
 
+const whiteListedColors = ["b60205", "9149d1"];
+
 export const Tag = ({
   color,
   name,
@@ -14,7 +16,9 @@ export const Tag = ({
       className={tx(
         `bg-[#${color}] border-[#${color}] border-opacity-30`,
         "w-max px-2 text-xs flex items-center font-medium whitespace-nowrap rounded-2xl border",
-        color.toLowerCase() === "b60205" ? "text-white" : "text-black",
+        whiteListedColors.includes(color.toLowerCase())
+          ? "text-white"
+          : "text-black",
         className
       )}
     >

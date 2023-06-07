@@ -30,7 +30,9 @@ export const IssuesContainer = () => {
         }
       >
         {data?.pages.map((issue) =>
-          issue.data.map((issue) => <IssueItem {...issue} />)
+          issue.data.map((issue, index) => (
+            <IssueItem {...issue} index={index} />
+          ))
         )}
       </InfiniteScroller>
     </section>

@@ -4,6 +4,7 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { VscIssues } from "react-icons/vsc";
 import { IIssue } from "src/queries/issue.query";
 import dayjs from "dayjs";
+import { BiGitPullRequest } from "react-icons/bi";
 
 interface Iprops extends IIssue {
   index?: number;
@@ -18,6 +19,8 @@ export const IssueItem = ({
   user,
   index,
   created_at,
+  assignee,
+  pull_request,
 }: Iprops) => {
   return (
     <section
@@ -50,11 +53,33 @@ export const IssueItem = ({
       </section>
 
       <section
-        className={tx("ml-auto max-w-[80px] min-w-[80px] hidden !sm:block")}
+        className={tx("ml-auto max-w-[80px] flex min-w-[80px] hidden !md:flex")}
       >
-        {user?.avatar_url && (
+        {pull_request?.html_url && (
+          <>
+            <BiGitPullRequest
+              onClick={() => {
+                window.open(pull_request.html_url, "_blank");
+              }}
+              className={tx(
+                "cursor-pointer text-fg-muted group-hover:text-accent-fg scale-90"
+              )}
+            />
+            <span
+              className={tx(
+                "text-xs font-semibold text-fg-muted group-hover:text-accent-fg relative"
+              )}
+            >
+              1
+            </span>
+          </>
+        )}
+      </section>
+
+      <section className={tx("max-w-[80px] min-w-[80px] hidden !md:block")}>
+        {assignee?.avatar_url && (
           <img
-            src={user?.avatar_url}
+            src={assignee?.avatar_url}
             alt="user-profile"
             className={tx("w-5 h-5 rounded-full object-cover")}
           />
@@ -65,7 +90,7 @@ export const IssueItem = ({
         onClick={() => {
           window.open(html_url, "_blank");
         }}
-        className={tx("gap-1 items-center h-max group hidden !sm:flex")}
+        className={tx("gap-1 items-center h-max group hidden !md:flex")}
       >
         <FaRegCommentAlt
           className={tx(

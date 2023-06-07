@@ -70,7 +70,7 @@ const Filters = () => {
 
       <section
         className={tx(
-          "ml-auto flex w-full justify-around flex-1 gap-4 text-fg-muted text-sm"
+          "ml-auto flex w-full justify-around flex-1 gap-6 text-fg-muted text-sm"
         )}
       >
         {filtersConfig.map((filter) => (

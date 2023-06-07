@@ -72,23 +72,30 @@ const Issues = () => {
       >
         <section className={tx("flex gap-2 items-center mb-8")}>
           <GoRepo className={tx("relative text-fg-muted top-0.5")} />
+
           <h1
             className={tx(
               "leading-none text-xl text-accent-fg cursor-pointer font-semibold"
             )}
           >
-            facebook / react
+            <a href={"https://github.com/facebook/react"} target="_blank">
+              facebook / react
+            </a>
           </h1>
-          <Tag name={"Public"} color={"7d8590"} className={"!bg-transparent"} />
+          <Tag
+            name={"Public"}
+            color={"7d8590"}
+            className={"!bg-transparent top-[2px] relative"}
+          />
           <StatisticButton className={tx("ml-auto hidden !sm:flex")}>
             <IoIosNotificationsOutline className={tx("text-base")} />
             Notifications
           </StatisticButton>
-          <StatisticButton className={tx("hidden !sm:flex")}>
+          <StatisticButton stats={"175k"} className={tx("hidden !sm:flex")}>
             <AiOutlineStar className={tx("text-base")} />
-            Stars
+            Star
           </StatisticButton>
-          <StatisticButton className={tx("hidden !sm:flex")}>
+          <StatisticButton stats={"35.3k"} className={tx("hidden !sm:flex")}>
             <TbGitFork className={tx("text-base")} />
             Fork
           </StatisticButton>
